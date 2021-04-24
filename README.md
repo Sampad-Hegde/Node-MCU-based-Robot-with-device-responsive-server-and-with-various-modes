@@ -7,6 +7,7 @@ so, connect to its Wi-Fi network and type [http://192.168.4.1](http://192.168.4.
 !!! Make sure that you disconnect the GPIO 3 and GPIO 1 before uploading the code, Because both are RX and TX pins for serial communication
 
 | Node-MCU Pin No | Peripheral Pin No |
+| :---            |              ---: |
 | D1 | Motor Driver Left Forward Pin (IN1) |
 | D2 | Motor Driver Left Backward Pin (IN2) |
 | D3 | Motor Driver Right Forward Pin (IN3) |
@@ -21,3 +22,5 @@ so, connect to its Wi-Fi network and type [http://192.168.4.1](http://192.168.4.
 
 ## Now open you favorite browser and visit [http://92.168.4.1](http://92.168.4.1)
 ### DONE !!!
+
+![Screenshot](ScreenShots/Phone_Browser_View.png)
