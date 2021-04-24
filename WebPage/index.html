@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+
+                $('.notSelectable').disableSelection();
+
+            });
+
+            $.fn.extend(
+                {
+                    disableSelection: function() 
+                    {
+                        this.each(function() 
+                        {
+                            this.onselectstart = function() 
+                            {
+                                return false;
+                            };
+                            this.unselectable = "on";
+                            $(this).css('-moz-user-select', 'none');
+                            $(this).css('-webkit-user-select', 'none');
+                        });
+                    }
+                });
+
+        </script>
+    </head>
+
+    <style>
+        .slider 
+        {
+            -webkit-appearance: none;
+            width: 140%;
+            height: 15px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            transform: translate(-20%, -350%);
+
+        }
+
+        .slider:hover 
+        {
+        opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb 
+        {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb 
+        {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+        #ForwardBtn 
+        {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            padding: 8px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            transform: translate(20%, 40%);
+            -webkit-touch-callout:none;
+            -webkit-user-select:none;
+            -khtml-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+            
+        }
+        #BackwardBtn 
+        {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            transform: translate(20%, -70%);
+            -webkit-touch-callout:none;
+            -webkit-user-select:none;
+            -khtml-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+            
+        }
+        #LeftBtn
+        {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            border-radius: 12px;
+            padding: 8px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            transform: translate(-60%, -10%);
+            -webkit-touch-callout:none;
+            -webkit-user-select:none;
+            -khtml-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+            
+                
+        }
+        #RightBtn
+        {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            padding: 8px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            transform: translate(40%, -10%); 
+            -webkit-touch-callout:none;
+            -webkit-user-select:none;
+            -khtml-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none; 
+                
+        }
+
+        .custom-select
+        {
+            transform: translate(15%, -60%);
+        }
+    </style>
+
+    <title>WIFI Robot</title>
+
+    <body style="margin: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);" oncopy="return false" oncut="return false" onpaste="return false" >        
+        
+        <header>
+           <button id="ForwardBtn" class="notSelectable">Forward</button>
+        </header>
+
+    </br>
+    </br>
+    </br>
+    </br>
+        <header>
+            <button id="LeftBtn"class="notSelectable" >Left</button> 
+
+            <button id="RightBtn"class="notSelectable">Right</button>
+        </header>
+    </br>
+    </br>
+    </br>
+    </br>
+       
+        <header>
+            <button id="BackwardBtn"class="notSelectable">   Backward    </button>
+       
+        </header>
+    </br>
+    </br>
+    </br>
+    </br>
+
+
+
+        <div class="slidecontainer" >
+
+            <input type="range" min="1" max="10" value="1" class="slider" id="myRange">
+      
+        </div>
+
+        <div class="custom-select" style="align-self: center;" onchange="modechanged(event)">
+            <select name="modes" id="modeselector">
+                <option value="Buttons_Control">Buttons Control</option>
+                <option value="Obstacle_Avoid">Obstacle Avoid</option>
+                <option value="Line_Follower">Line Follower</option>
+            </select>
+        </div>
+    
+    </body>
+    <script>
+        var frbtn = document.getElementById("ForwardBtn");
+        var slider = document.getElementById("myRange");
+        var bkbtn = document.getElementById("BackwardBtn");
+        var lfbtn = document.getElementById("LeftBtn");
+        var rgbtn = document.getElementById("RightBtn");
+
+        //var modeselc = document.getElementById("modeselector");
+
+        //modeselc.addEventListener("onchange",modechanged);
+
+        if (navigator.userAgent.match(/Mobile/i))
+        {
+
+            console.log("Mobile Device Found !!");
+
+            frbtn.addEventListener("touchstart", Forwardfn);
+            frbtn.addEventListener("touchend", StopFn);
+
+            bkbtn.addEventListener("touchstart", Backwardfn);
+            bkbtn.addEventListener("touchend", StopFn);
+            
+            lfbtn.addEventListener("touchstart", Leftfn);
+            lfbtn.addEventListener("touchend", StopFn);
+            
+            rgbtn.addEventListener("touchstart", Rightfn);
+            rgbtn.addEventListener("touchend", StopFn);
+
+        }
+        else
+        {
+            frbtn.addEventListener("mousedown", Forwardfn);
+            frbtn.addEventListener("mouseup", StopFn);
+
+            bkbtn.addEventListener("mousedown", Backwardfn);
+            bkbtn.addEventListener("mouseup", StopFn);
+            
+            lfbtn.addEventListener("mousedown", Leftfn);
+            lfbtn.addEventListener("mouseup", StopFn);
+            
+            rgbtn.addEventListener("mousedown", Rightfn);
+            rgbtn.addEventListener("mouseup", StopFn);
+        }        
+
+        slider.oninput = async function() 
+        {
+            fetch("http://192.168.4.1/setspeed?speed="+(slider.value - 1));
+        }
+
+        async function Forwardfn()
+        {
+            console.log("Fowrard");
+            fetch("http://192.168.4.1/forward");
+        }
+
+        async function Backwardfn()
+        {
+            console.log("Backward");
+            fetch("http://192.168.4.1/backward");
+        }
+
+        async function Leftfn()
+        {
+            console.log("Left");
+            fetch("http://192.168.4.1/left");
+        }
+
+        async function Rightfn()
+        {
+            console.log("right");
+            fetch("http://192.168.4.1/right");
+        }
+
+        async function StopFn()
+        {
+            console.log("stop");
+            fetch("http://192.168.4.1/stop");
+        }
+
+        async function modechanged(event)
+        {
+            console.log("Mode Changed");
+            console.log(event.srcElement.options.selectedIndex);
+            fetch("http://192.168.4.1/setmode?mode="+event.srcElement.options.selectedIndex);
+        }
+    </script>
+
+</html>
