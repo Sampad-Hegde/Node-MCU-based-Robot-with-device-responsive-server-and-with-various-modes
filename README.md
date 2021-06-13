@@ -20,7 +20,7 @@ so, connect to its Wi-Fi network and type [http://192.168.4.1](http://192.168.4.
 | GPIO 9 | Centre IR Proximity Sensor Input |
 | GPIO 10 | Right IR Proximity Sensor Input |
 
-## Now open your favorite browser and visit [http://92.168.4.1](http://92.168.4.1)
+## Now open your favorite browser and visit [http://192.168.4.1](http://192.168.4.1)
 ### DONE !!!
 # Here are some Screen Shots
 ![](https://github.com/Sampad-Hegde/Node-MCU-based-Robot-with-device-responsive-server-and-with-various-modes/blob/main/ScreenShots/Web_Browser_View.jpg)
