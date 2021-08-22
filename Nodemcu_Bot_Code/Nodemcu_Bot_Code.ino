@@ -244,6 +244,13 @@ const char index_html[] PROGMEM = R"rawliteral(
                 <option value="Line_Follower">Line Follower</option>
             </select>
         </div>
+        
+        
+        <footer>
+            Designed And Developed By :  <br>
+            © Sampad Hegde
+        </footer> 
+        
     
     </body>
     <script>
