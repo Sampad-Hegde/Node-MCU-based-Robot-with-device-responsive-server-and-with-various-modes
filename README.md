@@ -12,7 +12,7 @@ so, connect to its Wi-Fi network and type [http://192.168.4.1](http://192.168.4.
 | D2 | Motor Driver Left Backward Pin (IN2) |
 | D3 | Motor Driver Right Forward Pin (IN3) |
 | D4 | Motor Driver Right Backward Pin (IN4) |
-| GPIO 3 | Motor Driver PWM Forward Pin (IN1) |
+| GPIO 3 | Motor Driver PWM Pin |
 | D7 | Ultrasonic Trigger Pin |
 | D6 | Ultrasonic Echo Pin |
 | D8 | Servo Pin |
